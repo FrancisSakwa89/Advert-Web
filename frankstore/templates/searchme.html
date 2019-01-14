@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% load bootstrap4 %} {% block content %}
+<br>
+<br>
+<div class="jumbotron">
+        <form class="form-inline my-2 my-lg-0" role="search" action="">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search products" aria-label="Search" name="business">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+
+</div>
+
+<style>
+    .jumbotron{
+margin-right: 40%;
+margin-left: 20%;
+color:black;
+background-color: rgb(235, 230, 160);
+}
+</style>
+{% endblock %}
