@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<hr>
+<div class="alert alert-success" style="margin-right:10%;margin-left:30%">
+    Welcome to <strong style="color:black">{{profile.advert}}</strong> hood. To change a advert just update your profile!!  </div>
+      
+<div class="container">
+    <div class="intro">
+        <h2>Your Profile</h2>
+      </div>
+<hr>
+{% if profile.bio %}
+<div id='user-details'>
+    <p><img class="circular" src="{{profile.photo.url}}" alt="Avatar" style="border-radius: 50%;"><span class="repo-owner firstletter" style="padding:1.5em;font-size: 2em">{{user.username}}</span>
+    </p>
+    <p>
+      <!-- <span class='repo-owner' style=>adverts: </span>{{advertcount}} -->
+    </p>
+</div>
+    {{profile.bio}}
+    <p></p>
+    <span><a class='maillink' href="mailto:{{profile.contact}}" style="color: whitesmoke">{{profile.contact}}</a></span>
+    <p></p>
+    <h5 class="card-title firstletter"> Current advert: {{profile.advert}}</h5>
+    <a href="{% url 'newprofile' %}"><button type="button" class="btn btn-info">Update Profile</button></a>   
+    <br>
+    <br>
+ {% else %}
+ <p></p>
+    <a href="{% url 'newprofile' %}"><button type="button" class="btn btn-info">Update Profile</button></a>   
+    <br>
+    <br>
+  {% endif %}
+      <!-- <h4>Your adverts</h4>
+      <p></p>
+      {% if adverts %}
+          {% for advert in adverts %}
+          <div class="col-md-4 mx-auto" style="color:white">
+              <img class='streamimg' src="{{advert.image.url}}" height="300px" width="95%"  alt="{{ advert.name }}"></img>
+              <br>
+                <h5 class="card-title firstletter">{{advert.name}}</h5>
+                <p class="card-text firstletter">{{ advert.description | truncatechars:450 }}</p>
+                <div class="animated infinite flash">
+                <p class="card-text"><a href="{% url 'advert' advert.id %}"><button type="button" class="btn btn-primary">View</button></a></p>
+                </div>
+                <br>
+            </div>
+            <br>
+      {% endfor %}
+      
+      
+      {% else %}
+      <h4 style="text-align: center">No adverts to show, Add one <a href="{% url 'newadvert' %}">here</a>.</h4>
+      {% endif %}
+      </div> 
+
+
+{% endblock %}

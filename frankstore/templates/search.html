@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+        <div class="intro">
+                <h2>Searching ...</h2>
+            </div>
+            <hr>
+        
+{% if searched_adverts %}
+    <h5>Found {{ searched_adverts|length }} advert(s) for the searched term '{{message}}'</h5>
+{% else %}
+    <h5> Found 0 advert(s) for the search term '{{message}}'</h5>
+{% endif %}
+
+<br>
+
+{% if searched_adverts %}
+<div class="row">
+        {% for advert in searched_adverts %}
+            <div class="col-sm-4" style="margin-bottom: 2em;">
+              <div class="card bg-">
+                <div class="card-body">
+                        <img class='streamimg' src="{{advert.image.url}}" height="300px" width="95%" alt="{{ advert.name }}"></img>
+                  <h5 class="card-title firstletter" style="color:black">{{advert.name}}</h5>
+                  <p class="card-text"><a class='maillink' href="mailto:{{profile.contact}}">{{advert.email}}</a></p>
+                  <p class="card-text" style="color:black">Location: {{advert.location}}</p>
+                  <p class="card-text" style="color:black">Prize: {{advert.prize}}</p>
+                  <p class="card-text" style="color:black">{{advert.pub_date}}</p>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+        </div>
+{% endif %}
+
+
+
+</div>
+
+{% endblock %}

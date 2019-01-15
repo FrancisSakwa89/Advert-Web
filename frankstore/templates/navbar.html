@@ -60,11 +60,10 @@ body {
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="{% url 'welcome'%}">Home</a>
-
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
+  <a href="accounts/register">Register</a>
+  <a href="accounts/login">Login</a>
+  <a href="{% url 'adverts'%}">Adverts</a>
+  <a href="{% url 'newadvert'%}">Add Adverts</a>
   <a href="{% url 'searchme'%}">Search Adverts</a>
 
 </div>

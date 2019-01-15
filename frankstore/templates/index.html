@@ -14,7 +14,7 @@
     </header>
     <main>
         <div class="animated  flash">
-            <h1 style="text-align:center;font-family: 'Major Mono Display', monospace;"><a href="" style="color:white">ADVERT</a></h1>
+            <h1 style="text-align:center;font-family: 'Major Mono Display', monospace;"><a href="{% url 'adverts'%}" style="color:white">FRANKVERT</a></h1>
         </div>
         <style>
             /* Make the image fully responsive */
@@ -37,28 +37,33 @@
                 <!-- The slideshow -->
                 <div class="carousel-inner">
                     <div class="carousel-item ">
-                        <img src="https://images.unsplash.com/photo-1463107971871-fbac9ddb920f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80"
-                            alt="FRANCO PHOTOS" width="1100" height="500">
+                        <img src="https://images.unsplash.com/photo-1455404303601-34958b4d1ef5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+                            alt="FRANCO PHOTOS" width="1100" height="300">
                     </div>
                     <div class="carousel-item">
-                        <img src="https://images.unsplash.com/photo-1517605817225-1a38c494d974?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-                            alt="FRANCO PHOTOS" width="1100" height="500">
+                        <img src="https://images.unsplash.com/photo-1525944069734-ce553dba48dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80"
+                            alt="FRANCO PHOTOS" width="1100" height="300">
                     </div>
                     <div class="carousel-item">
-                        <img src="https://images.unsplash.com/photo-1527091688530-f3216bd4a69c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-                            alt="FRANCO PHOTOS" width="1100" height="500">
+                        <img src="https://images.unsplash.com/photo-1522198763288-96e9f39904af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+                            alt="FRANCO PHOTOS" width="1100" height="300">
                     </div>
                     <div class="carousel-item active">
-                        <img src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80"
-                            alt="FRANCO PHOTOS" width="1100" height="500">
+                        <img src="https://images.unsplash.com/photo-1498426317435-c4a0ebd4774f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+                            alt="FRANCO PHOTOS" width="1100" height="300">
                     </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1503428141221-a207b8889140?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+                        alt="FRANCO PHOTOS" width="1100" height="300">
+                </div>
                 </div>
 
                 <!-- Left and right controls -->
-                <a class="carousel-control-prev" href="#myCarousel">
+                <a class="carousel-control-prev" href="#myCarousel" style="display:none">
                     <span class="carousel-control-prev-icon"></span>
                 </a>
-                <a class="carousel-control-next" href="#myCarousel">
+                <a class="carousel-control-next" href="#myCarousel" style="display:none">
                     <span class="carousel-control-next-icon"></span>
                 </a>
             </div>
@@ -82,7 +87,7 @@
                     <form action="" class="form-container">
                         <h1 style="color:black">Chat</h1>
 
-                        <label for="msg"><b>Message</b></label>
+                        <label for="msg"><b style="color:black;">Message</b></label>
                         <textarea placeholder="Type message.." name="msg" required></textarea>
 
                         <button type="submit" class="btn">Send</button>

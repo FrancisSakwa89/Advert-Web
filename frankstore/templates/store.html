@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- <div class="jumbotron" style="background-image:url('https://images.unsplash.com/photo-1444464666168-49d633b86797?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=749&q=80');background-size:cover"> -->
+<hr>
+  <div class="alert alert-success" style="margin-right:10%;margin-left:30%">
+   You have successifully joined <strong style="color:black">{{advert.name}}</strong> hood. To change a advert exit just update your profile!!  </div>
+      
+
+  <div class="col-md-4" style="color:white">
+      <img class='streamimg' src="{{advert.image.url}}" height="300px" width="95%" alt="{{ advert.name }}"></img>
+      <br>
+      <div class="col-md-12" style="color:white">
+        <h5 class="card-title firstletter">{{advert.name}}</h5>
+        <p class="card-text firstletter">{{ advert.description | truncatechars:450 }}</p>
+        <p class="card-text" style="font-style:italic;">{{advert.pub_date}}</p>
+        <h5>{{advert.prize}}</h5>
+        <p class="card-title firstletter"> {{advert.location}}</p>
+
+    </div>
+  </div>
+  <p></p>
+
+  <br>
+
+<div class="well" style="text-align:center">
+    <a href="{% url 'newadvert' %}"><button type="button" class="btn btn-info">Update Neighbourhhod</button></a> 
+    <a href="{% url 'welcome' %}"><button type="button" class="btn btn-info">Exit Hood</button></a> 
+
+    <br>
+    
+    <!-- <h3> Add Posts<a href="{% url 'newpost' %}">here</a>.</h3> -->
+  </div>
+  <hr>
+  
+    </div>
+    <br>
+    <br>
+  </div>
+{% endblock %}
