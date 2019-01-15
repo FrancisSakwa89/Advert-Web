@@ -17,9 +17,11 @@
   <div class="row">
     {% for advert in adverts %}
     <div class="col-md-4" style="color:white">
+        <div class="card bg-dark">
+            <div class="card-body" style="background-color:#33705c;">
       <img class='streamimg' src="{{advert.image.url}}" height="300px" width="95%" alt="{{ advert.name }}"></img>
       <br>
-      <div class="col-md-12" style="color:white">
+      <div class="col-md-12" style="color:whitesmoke">
         <h5 class="card-title firstletter">{{advert.name}}</h5>
         <p class="card-text firstletter">{{ advert.description | truncatechars:450 }}</p>
         <p class="card-text" style="font-style:italic;">{{advert.pub_date}}</p>
@@ -28,6 +30,8 @@
 
 
       </div>
+            </div>
+        </div>
       <div class="animated flash">
         <p class="card-text"><a href="{% url 'advert'}"><button type="button" class="btn btn-primary" id="plusSign" style="background-color:#33705c;">View Details</button></a></p>
         <a href="{% url 'newadvert' %}"><button type="button" class="btn btn-info">Update Neighbourhhod</button></a> 
