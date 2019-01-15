@@ -71,6 +71,20 @@ body {
 <div id="main">
   
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+  <!-- <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="{% url 'welcome' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Choose location
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {% if locations %}
+          {% for location in locations %}
+        <a class="dropdown-item" href="{% url 'location' location.id %}">{{location.location}}</a>
+          {% endfor %}
+        {% endif %}
+        <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="{% url 'welcome' %}">All locations</a>
+    </li> -->
+
   </div>
 </div>
 <script>
