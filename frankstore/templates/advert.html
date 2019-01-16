@@ -17,60 +17,64 @@
   <div class="row">
     {% for advert in adverts %}
     <div class="col-md-4" style="color:white">
-        <div class="card bg-dark">
-            <div class="card-body" style="background-color:#33705c;">
-      <!-- <img class='streamimg' src="{{advert.image.url}}" height="300px" width="95%" alt="{{ advert.name }}"></img> -->
-      <br>
-      <img  src="{{advert.image.url}}" height="350px" width="100%" alt="{{ advert.name }}" data-toggle="modal" data-target="#a{{ advert.id }}">
+      <div class="card bg-dark">
+        <div class="card-body" style="background-color:#33705c;">
+          <!-- <img class='streamimg' src="{{advert.image.url}}" height="300px" width="95%" alt="{{ advert.name }}"></img> -->
+          <br>
+          <img class="activator" src="{{advert.image.url}}" height="350px" width="100%" alt="{{ advert.name }}"
+            data-toggle="modal" data-target="#a{{ advert.id }}">
 
-            <!-- Modal -->
-            <div class="modal fade" id="a{{ advert.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                  <div class="modal-content" style="background-color:#33705c;">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle">{{advert.name}}</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: red">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class='image-modal'>
-                            <img  src="{{advert.image.url}}" alt="{{ advert.name }}" data-toggle="modal" data-target="#exampleModalCenter" height="350px" width="80%">
-                        </div>
-                        <br>
-                        <div class='desc-modal' style="color:black">
-                          <!-- <h5 class="card-title firstletter">{{advert.name}}</h5> -->
-                          <p class="card-text firstletter">Description: {{ advert.description | truncatechars:450 }}</p>
-                          <p class="card-text" style="font-style:italic;">Posted On: {{advert.pub_date}}</p>
-                          <p class="card-title firstletter">Category: {{advert.location}}</p>
-                          <p class="card-title firstletter">Prize: {{advert.prize}}</p>
-                        </div>                 
-    
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-success" onclick="">Buy Now</button>
+          <!-- Modal -->
+          <div class="modal fade" id="a{{ advert.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content" style="background-color:#33705c;">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">{{advert.name}}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: red">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class='image-modal'>
+                    <img src="{{advert.image.url}}" alt="{{ advert.name }}" data-toggle="modal" data-target="#exampleModalCenter"
+                      height="350px" width="80%">
+                  </div>
+                  <br>
+                  <div class='desc-modal' style="color:black">
+                    <!-- <h5 class="card-title firstletter">{{advert.name}}</h5> -->
+                    <p class="card-text firstletter">Description: {{ advert.description | truncatechars:450 }}</p>
+                    <p class="card-text" style="font-style:italic;">Posted On: {{advert.pub_date}}</p>
+                    <p class="card-title firstletter">Category: {{advert.category}}</p>
+                    <p class="card-title firstletter">Prize: {{advert.prize}}</p>
+                    <div class="animated flash">
+                      <a href="{% url 'newadvert' %}"><button type="button" class="btn btn-info">Update Advert</button></a>
+
+                      <form action="{% url 'advert_remove' advert.id%}" method="get">
+                        <a class="btn btn-danger" href="{% url 'advert_remove' pk=advert.pk %}"><span class="glyphicon glyphicon-remove">Delete</span></a>
+                      </form>
                     </div>
                   </div>
+
                 </div>
-                
-                
-        </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                  <p><a href="{% url 'mpesa' %}"><button type="button" class="btn btn-success">Buy Now</button></a></p>
+                </div>
+              </div>
             </div>
+
+
           </div>
-          <div class="animated flash">
-        <p><a href="{% url 'newadvert' %}"><button type="button" class="btn btn-info">Update Neighbourhhod</button></a></p>
-        
-        <form action="{% url 'advert_remove' advert.id%}" method="get">
-          <a class="btn btn-danger" href="{% url 'advert_remove' pk=advert.pk %}"><span class="glyphicon glyphicon-remove">Delete</span></a>
-        </form>
+        </div>
       </div>
+
       <br>
     </div>
     <br>
     {% endfor %}
   </div>
-  
+
   {% else %}
   <h3> Add adverts<a href="{% url 'newadvert' %}">here</a>.</h3>
   {% endif %}
@@ -79,23 +83,24 @@
 </div>
 <script>
 
-$("#DeleteButton").click(function(){;
+  $("#DeleteButton").click(function () {
+    ;
     variableLoaded = true;
 
 
-  if(variableLoaded==true){
-    $.ajax({
-      url: '/',
-      type: 'get',
-      success: function(data) {
-        $(".jumbotron").html(data);
-        console.log('it worked');
-      },
-      failure: function(data) {
-        alert('Got an error dude');
-      }
-    });
-  }
+    if (variableLoaded == true) {
+      $.ajax({
+        url: '/',
+        type: 'get',
+        success: function (data) {
+          $(".jumbotron").html(data);
+          console.log('it worked');
+        },
+        failure: function (data) {
+          alert('Got an error dude');
+        }
+      });
+    }
   });
 
 </script>

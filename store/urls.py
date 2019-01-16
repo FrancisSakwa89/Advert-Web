@@ -16,11 +16,18 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 from django.contrib.auth import views
+from frankstore import views as user_views
+from django.contrib.auth import views as auth_views
+
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-     url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^signup$',user_views.register,name='register'),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^login/$', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     url(r'^logout/$', views.logout, {"next_page": '/'}), 
+    # url(r'profile/$', user_views.profile, name='profile'),
     url(r'',include('frankstore.urls')),
 
 ]

@@ -23,6 +23,10 @@ urlpatterns=[
     url(r'^search/', views.search,name = 'search'),
     url(r'^advert/(?P<pk>\d+)/remove/$', views.advert_remove, name='advert_remove'),
     url(r'^myadvert/', views.myadvert, name='myadvert'),
+    url(r'^mpesa/', views.mpesa,name = 'mpesa'),
+    # url(r'^category/(\d+)', views.category, name='category'),
+
+
 
 
 

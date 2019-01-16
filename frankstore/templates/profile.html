@@ -3,26 +3,79 @@
 {% block content %}
 <hr>
 <div class="alert alert-success" style="margin-right:10%;margin-left:30%">
-    Welcome to <strong style="color:black">{{profile.advert}}</strong> hood. To change a advert just update your profile!!  </div>
+    Welcome to your Profile!! <strong style="color:black">Click Photo</strong>  To view details or to update your profile!!. Your advert for now is <strong style="color:black">{{profile.advert.name}}</strong> </div>
       
 <div class="container">
     <div class="intro">
         <h2>Your Profile</h2>
       </div>
-<hr>
+      <br>
 {% if profile.bio %}
-<div id='user-details'>
-    <p><img class="circular" src="{{profile.photo.url}}" alt="Avatar" style="border-radius: 50%;"><span class="repo-owner firstletter" style="padding:1.5em;font-size: 2em">{{user.username}}</span>
-    </p>
+<div class="col-md-4" style="color:white">
+        <div class="card bg-dark">
+            <div class="card-body" style="background-color:#33705c;">
+      <!-- <img class='streamimg' src="{{profile.photo.url}}" height="300px" width="95%" alt="{{ advert.name }}"></img> -->
+      <br>
+      <img class="activator" src="{{profile.photo.url}}" height="350px" width="100%" alt="{{ profile.advert.name }}" data-toggle="modal" data-target="#a{{ profile.advert.id }}">
+
+            <!-- Modal -->
+            <div class="modal fade" id="a{{ profile.advert.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                  <div class="modal-content" style="background-color:#33705c;">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Name: {{user.username}}</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: red">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class='image-modal'>
+                            <img  src="{{profile.photo.url}}" alt="{{ advert.name }}" data-toggle="modal" data-target="#exampleModalCenter" height="350px" width="80%">
+                        </div>
+                        <br>
+                        <div class='desc-modal' style="color:black">
+                          <!-- <h5 class="card-title firstletter">{{advert.name}}</h5> -->
+                          <span class='repo-owner' style=>Total adverts: </span>{{advertscount}}
+                        </p>
+                    </div>
+                        Your Bio: {{profile.bio}}
+                        <p></p>
+                        <span><a class='maillink' href="mailto:{{profile.contact}}" style="color: whitesmoke">Contacts: {{profile.contact}}</a></span>
+                        <p></p>
+                        <h5 class="card-title firstletter"> Current advert: {{profile.advert.name}}</h5>
+                        <img class="rounded-square" src="{{profile.advert.image.url}}" height="200px" width="50%">
+                        <br>
+                        <br>
+                          
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            <a href="{% url 'newprofile' %}"><button type="button" class="btn btn-info">Update Profile</button></a>   
+                        </div>
+                    </div>                 
+                      </div>
+                </div>
+                
+                
+        </div>
+            </div>
+          </div>
+        
+      <br>
+    </div>
+<!-- <div id='user-details'>
+    <p  style="font-size: 2em">Name: {{user.username}}</p>
+        <img class="rounded-circle account-img" src="{{profile.photo.url}}" alt="Avatar" height="200px" width="20%">
     <p>
-      <!-- <span class='repo-owner' style=>adverts: </span>{{advertcount}} -->
+      <span class='repo-owner' style=>Total adverts: </span>{{advertscount}}
     </p>
 </div>
-    {{profile.bio}}
+    Your Bio: {{profile.bio}}
     <p></p>
-    <span><a class='maillink' href="mailto:{{profile.contact}}" style="color: whitesmoke">{{profile.contact}}</a></span>
+    <span><a class='maillink' href="mailto:{{profile.contact}}" style="color: whitesmoke">Contacts: {{profile.contact}}</a></span>
     <p></p>
-    <h5 class="card-title firstletter"> Current advert: {{profile.advert}}</h5>
+    <h5 class="card-title firstletter"> Current advert: {{profile.advert.name}}</h5>
+    <img class="rounded-square" src="{{profile.advert.image.url}}" height="200px" width="20%">
     <a href="{% url 'newprofile' %}"><button type="button" class="btn btn-info">Update Profile</button></a>   
     <br>
     <br>
@@ -32,28 +85,10 @@
     <br>
     <br>
   {% endif %}
-      <!-- <h4>Your adverts</h4>
-      <p></p>
-      {% if adverts %}
-          {% for advert in adverts %}
-          <div class="col-md-4 mx-auto" style="color:white">
-              <img class='streamimg' src="{{advert.image.url}}" height="300px" width="95%"  alt="{{ advert.name }}"></img>
-              <br>
-                <h5 class="card-title firstletter">{{advert.name}}</h5>
-                <p class="card-text firstletter">{{ advert.description | truncatechars:450 }}</p>
-                <div class="animated infinite flash">
-                <p class="card-text"><a href="{% url 'advert' advert.id %}"><button type="button" class="btn btn-primary">View</button></a></p>
-                </div>
-                <br>
-            </div>
-            <br>
-      {% endfor %}
-      
-      
-      {% else %}
-      <h4 style="text-align: center">No adverts to show, Add one <a href="{% url 'newadvert' %}">here</a>.</h4>
-      {% endif %}
-      </div> 
+   </div>   
+</div> -->
+<style>
 
 
+</style>
 {% endblock %}
