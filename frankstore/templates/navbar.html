@@ -71,37 +71,58 @@ body {
 <div id="main">
   
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
-  <div class="navbar-nav">
+  
+  <div class="navbar-nav" style="float:right;">
       {% if user.is_authenticated %}
-  <li class="dropdown">
-    <a href="#" class="dropdown-toggle btn btn-outline-success" data-toggle="dropdown" role="button" aria-expanded="true">Account
-              <span class="caret"></span>
-          </a>
-    <ul class="dropdown-menu" role="menu">
-      
-      <li>
-        <a href="/accounts/password/change" style="color:black">Change Password</a>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle btn btn" data-toggle="dropdown" role="button" aria-expanded="true" style="color:white">Account
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          
+          <li>
+            <a href="/accounts/password/change" style="color:black">Change Password</a>
+          </li>
+          
+          <li>
+            <a href="/logout" style="color:black">Logout</a>
+          </li>
+          
+        </ul>
       </li>
-    
-      <li>
-        <a href="/logout" style="color:black">Logout</a>
-      </li>
-
     </ul>
-  </li>
-</ul>
-{% else %}
-<li>
-  <a class='btn btn-default' href="/accounts/login" style="color:black">Login</a>
-</li>
-</ul>
-
-{% endif %}
+    {% else %}
+    <li>
+      <a class='btn btn-default' href="/accounts/login" style="color:black">Login</a>
+    </li>
+  </ul>
+  
+  {% endif %}
 </ul>
 
-    </div>
-  </div>
 </div>
+<div class="navbar-nav" style="float:right;">
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="{% url 'welcome' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white">
+    Choose category
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    {% if categories %}
+      {% for category in categories %}
+    <a class="dropdown-item" href="{% url 'category' category.id %}">{{category.category}}</a>
+      {% endfor %}
+    {% endif %}
+    <div class="dropdown-divider"></div>
+  <a class="dropdown-item" href="{% url 'welcome' %}">All categories</a>
+</li>
+</div>
+</div>
+
+</div>
+</div>
+  </div>
+
+  
 <script>
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";

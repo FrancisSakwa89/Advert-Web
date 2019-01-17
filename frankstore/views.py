@@ -6,9 +6,8 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
-from .models import Profile, Advert
+from .models import Profile, Advert,Category
 from .forms import ProfileForm,NewAdvertForm,RegisterForm,UserUpdateForm, ProfileUpdateForm
-from django.contrib import messages
 from django.views.generic import (ListView,DetailView,CreateView,UpdateView,)
 # Create your views here.
 
@@ -123,6 +122,8 @@ def search(request):
     title = 'Search Error'
     return render(request,'search.html',{'message':message,'title':title,'profile':profile})
 
+
+@login_required(login_url='/accounts/login/')
 def advert_remove(request, pk):
     advert = get_object_or_404(Advert, pk=pk)
     advert.delete()
@@ -157,15 +158,15 @@ def register(request):
 
     return render(request, 'registration/registration_form.html',{'form': form})
 
-# def category(request,category):
+def category(request,category):
 
-#   categories = Category.objects.all()
+  categories = Category.objects.all()
 
-#   if category.objects.get(pk=category):
-#     adverts = Advert.filter_by_category(category)
-#     title = (category.objects.get(pk=category)).category
+  if category.objects.get(pk=category):
+    adverts = Advert.filter_by_category(category)
+    title = (category.objects.get(pk=category)).category
 
-#   else:
-#     raise Http404()
+  else:
+    raise Http404()
 
-#   return render(request,'cat.html',{'title':title,'adverts':adverts, 'categories':categories})
+  return render(request,'cat.html',{'title':title,'adverts':adverts, 'categories':categories})

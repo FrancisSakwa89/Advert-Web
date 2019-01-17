@@ -38,3 +38,23 @@ def save_profile(self):
     self.save()
 
 
+class Category(models.Model):
+  category = models.CharField(max_length=60)
+
+  def __str__(self):
+    return self.category
+  class Meta:
+    ordering = ['category']
+
+  def save_category(self):
+    self.save()
+
+  def delete_category(self):
+    self.delete()
+
+  @classmethod
+  def update_category(cls,id,category):
+    category = cls.objects.get(pk=id)
+    category = cls(category=category)
+    category.save()
+
