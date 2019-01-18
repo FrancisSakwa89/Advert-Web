@@ -22,13 +22,32 @@ class Profile(models.Model):
   advert = models.ForeignKey(Advert, on_delete=models.CASCADE,blank=True,null=True)
   user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-def __str__(self):
-        return f'{self.user.username} Profile'
+  @receiver(post_save, sender=User)
+  def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+      Profile.objects.create(user=instance)
 
-@property
-def image(self):
-    if self.photo and hasattr(self.photo, 'url'):
-        return self.photo.url
+  @receiver(post_save, sender=User)
+  def save_user_profile(sender, instance, **kwargs):
+      instance.profile.save()
+
+  post_save.connect(save_user_profile, sender=User)
+
+  def save_profile(self):
+    self.save()
+
+  def delete_profile(self):
+    self.delete()
+
+
+
+  def __str__(self):
+          return f'{self.user.username} Profile'
+
+  @property
+  def image(self):
+      if self.photo and hasattr(self.photo, 'url'):
+          return self.photo.url
 
 # @classmethod
 # def search_by_username(cls,search_term):

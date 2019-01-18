@@ -4,6 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from .models import Profile, Advert,Category
@@ -170,3 +171,11 @@ def category(request,category):
     raise Http404()
 
   return render(request,'cat.html',{'title':title,'adverts':adverts, 'categories':categories})
+
+@login_required(login_url='/accounts/login/')
+def terms(request):
+  id = request.user.id
+  profile = Profile.objects.get(user=id)
+  # return redirect('login')
+
+  return render(request, 'term.html', {'profile':profile})

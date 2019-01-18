@@ -25,6 +25,8 @@ urlpatterns=[
     url(r'^myadvert/', views.myadvert, name='myadvert'),
     url(r'^mpesa/', views.mpesa,name = 'mpesa'),
     url(r'^category/(\d+)', views.category, name='category'),
+    url(r'^terms/', views.terms,name = 'terms'),
+
 
 
 

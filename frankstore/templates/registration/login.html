@@ -25,9 +25,11 @@
             </div>
 
             <input type="hidden" name="next" value="{{next}}">
-            <p> Don't have an account? <a href="/accounts/register">Register</a>
-                <p>Admin Password? <a href="/accounts/password/change">Change Password</a>
-                    <p>Homepage <a href="{% url 'welcome' %}">Home</a></p>
+            <p> Don't have an account? <a href="/accounts/register" style="color:whitesmoke;text-decoration: underline;text-decoration-color: teal">Register</a>
+                <p>Admin Password? <a href="/accounts/password/change" style="color:whitesmoke;text-decoration: underline;text-decoration-color: teal">Change Password</a>
+                    <p>Homepage <a href="{% url 'welcome' %}" style="color:whitesmoke;text-decoration: underline;text-decoration-color: teal">Home</a></p>
+                    <p><a href="{% url 'terms'%}" style="color:whitesmoke;text-decoration: underline;text-decoration-color: teal">Terms & conditions</a>
+
           </form>
 
         </div>
